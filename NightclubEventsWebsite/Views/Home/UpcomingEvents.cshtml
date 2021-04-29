@@ -11,7 +11,14 @@
     {
         <div class="text-center event">
             <h3>@ev.EventTitle</h3>
-            <p>@ev.ClubName - @ev.EventDate.ToString().Split(' ')[0]</p>
+            <p>Location: @ev.ClubName</p>
+            
+            @if (!string.IsNullOrWhiteSpace(ev.DJName))
+            {
+                <p>Guest DJ: @ev.DJName</p>
+            }
+
+            <p>@ev.EventDate.ToString().Split(' ')[0] | @ev.StartTime.ToString().Split(' ')[1] - @ev.EndTime.ToString().Split(' ')[1]</p>
         </div>
     }
 

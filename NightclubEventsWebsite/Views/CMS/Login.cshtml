@@ -3,9 +3,25 @@
     Layout = "_Layout";
 }
 
-<h2 class="text-center">Login</h2>
+<div class="text-center loginBox">
+    <h2 class="text-center">Login</h2>
 
-@using (Html.BeginForm("GotoCms", "CMS"))
-{
-    <input type="submit" value="Login">
-}
+    <form id="loginForm" method="get">
+        
+        <div id="incorrectPasswordDiv" style="display: none">
+            <h6 style="color: red">Incorrect username or password!</h6>
+        </div>
+
+        <input type="text" placeholder="Username" id="username" name="username">
+        <input type="password" placeholder="Password" id="password" name="password">
+
+        <input type="submit" value="Login" onclick="checkDetails();">
+    </form>
+    
+    <div style="display: none">
+        @using (Html.BeginForm("GotoCms", "CMS"))
+        {
+            <input type="submit" value="login" id="loginBtn">
+        }
+    </div>
+</div>

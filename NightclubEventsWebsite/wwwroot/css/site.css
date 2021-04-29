@@ -54,21 +54,46 @@ button.accept-policy {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    margin-left: 5%;
 }
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+   
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
+    background: #cccccc;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* this only works on some browsers so remove*/
+/*
+.doParallax {
+    background-image: url("../img/parallax.jpg");
+    height: 100%;
+
+    background-attachment:fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+.bg {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-position: center;
+    background-repeat: repeat;
+}*/
 
 .event {
     background: #0366d6;
@@ -136,3 +161,31 @@ body {
         background-color: #ddd;
         outline: none;
     }
+
+.loginBox {
+    background-color: #0366d6;
+    width: 100%;
+    color: #e5e5e5;
+    padding: 5% 8%;
+    margin: 5%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 5px dashed #ccc;
+    text-align: center;
+    display: inline-block;
+}
+
+.loginBox input[type=text], input[type=password] {
+    width: 100%;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+.loginBox input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
