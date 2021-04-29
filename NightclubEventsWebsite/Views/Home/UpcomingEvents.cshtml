@@ -1,0 +1,18 @@
+﻿@model List<Event>
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Upcoming Events</h1>
+    <p>Upcoming events in sheffield.</p>
+
+    @foreach (var ev in Model)
+    {
+        <div class="text-center event">
+            <h3>@ev.EventTitle</h3>
+            <p>@ev.ClubName - @ev.EventDate.ToString().Split(' ')[0]</p>
+        </div>
+    }
+
+</div>

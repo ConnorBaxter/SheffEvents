@@ -1,0 +1,60 @@
+﻿@using System.Diagnostics
+@model List<Event>
+@{
+    ViewData["Title"] = "Content Management System";
+    Layout = "_Layout";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<h2>Content Management System</h2>
+
+<div class="addEventForm">
+    @using (Html.BeginForm("AddEvent", "CMS"))
+    {
+        <form class="text-center">
+            <label for="addEventTitle">Event Title:</label>
+            <input type="text" value="" id="addEventTitle" name="addEventTitle">
+
+            <label for="addEventClubname">Club Name:</label>
+            <input type="text" value="" id="addEventClubname" name="addEventClubname">
+
+            <label for="addEventDJName">Dj Name:</label>
+            <input type="text" value="" id="addEventDJName" name="addEventDJName">
+
+            <label for="addEventDate">Event Date:</label>
+            <input type="text" value="" id="addEventDate" name="addEventDate">
+
+            <label for="addEventStartTime">Event Start Time:</label>
+            <input type="text" value="" id="addEventStartTime" name="addEventStartTime">
+
+            <label for="addEventEndTime">Event End Time:</label>
+            <input type="text" value="" id="addEventEndTime" name="addEventEndTime">
+
+            <input type="submit" value="Add event">
+        </form>
+    }
+</div>
+
+<div class="deleteEventForm">
+    @using (Html.BeginForm("RemoveEvent", "CMS"))
+    {
+
+        @if (@Model == null)
+        {
+            Debug.WriteLine("No events loaded!");
+            return;
+        }
+
+        <label for="deleteEventTitle">Select event:</label>
+        <select name="deleteEventTitle">
+            @foreach (var ev in @Model)
+            {
+                <option value="@ev.EventTitle" name="@ev.EventID">@ev.EventTitle</option>
+            }
+        </select>
+        <br/>
+
+        <input type="submit" value="Delete event">
+    }
+</div>
