@@ -1,0 +1,38 @@
+﻿@using System.Diagnostics
+@model Event
+@{
+    ViewData["Title"] = "Content Management System";
+    Layout = "_Layout";
+}
+
+<div class="addEventForm">
+    <h3>Modify Event</h3>
+
+    @using (Html.BeginForm("ModifyEvent", "CMS"))
+    {
+        <form class="text-center">
+
+            <input type="number" style="display: none" value="@Model.EventID" name="oldEventID">
+
+            <label for="addEventTitle">Event Title:</label>
+            <input type="text" value="@Model.EventTitle" id="addEventTitle" name="addEventTitle">
+
+            <label for="addEventClubname">Club Name:</label>
+            <input type="text" value="@Model.ClubName" id="addEventClubname" name="addEventClubname">
+
+            <label for="addEventDJName">Dj Name:</label>
+            <input type="text" value="@Model.DJName" id="addEventDJName" name="addEventDJName">
+
+            <label for="addEventDate">Event Date:</label>
+            <input type="text" value="@Model.EventDate.ToString().Split(' ')[0]" id="addEventDate" name="addEventDate">
+
+            <label for="addEventStartTime">Event Start Time:</label>
+            <input type="text" value="@Model.StartTime.ToString().Split(' ')[1]" id="addEventStartTime" name="addEventStartTime">
+
+            <label for="addEventEndTime">Event End Time:</label>
+            <input type="text" value="@Model.EndTime.ToString().Split(' ')[1]" id="addEventEndTime" name="addEventEndTime">
+
+            <input type="submit" value="Modify event">
+        </form>
+    }
+</div>

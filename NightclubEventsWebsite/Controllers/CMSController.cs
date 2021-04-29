@@ -68,6 +68,50 @@ namespace NightclubEventsWebsite.Controllers
             return RedirectToAction(nameof(Cms));
         }
 
+        public IActionResult RedirectToModifyEvent(string modifyEventTitle)
+        {
+            var eventId = from e in _context.Events where e.EventTitle == modifyEventTitle select e;
+
+            Event ev = eventId.First();
+
+            Debug.WriteLine("Modify event: " + ev.EventID + " - " + ev.EventTitle);
+
+            return View("ModifyEvent", ev);
+        }
+
+        public IActionResult ModifyEvent(
+            int oldEventID,
+            string addEventTitle,
+            string addEventClubname,
+            string addEventDJName,
+            string addEventDate,
+            string addEventStartTime,
+            string addEventEndTime)
+        {
+            var newStartTime = DateTime.ParseExact(addEventStartTime, "H:mm:ss", null, System.Globalization.DateTimeStyles.None);
+            var newEndTime = DateTime.ParseExact(addEventEndTime, "H:mm:ss", null, System.Globalization.DateTimeStyles.None);
+
+            Debug.WriteLine("old ID: " + oldEventID);
+
+            Event newEvent = new Event
+            {
+                EventTitle = addEventTitle,
+                ClubName = addEventClubname,
+                DJName = addEventDJName,
+                EventDate = DateTime.Parse(addEventDate),
+                StartTime = newStartTime,
+                EndTime = newEndTime
+            };
+
+            Debug.WriteLine("modifying event: " + newEvent.EventTitle);
+
+            _context.Add(newEvent);
+            _context.Remove(_context.Events.Find(oldEventID));
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Cms));
+        }
+
         public IActionResult RemoveEvent(string deleteEventTitle)
         {
             var eventId = from e in _context.Events where e.EventTitle == deleteEventTitle select e;

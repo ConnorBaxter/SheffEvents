@@ -9,7 +9,10 @@
 
 <h2>Content Management System</h2>
 
+@* add event *@
 <div class="addEventForm">
+    <h3>Add Event</h3>
+
     @using (Html.BeginForm("AddEvent", "CMS"))
     {
         <form class="text-center">
@@ -36,7 +39,36 @@
     }
 </div>
 
+@* modify event *@
+<div class="addEventForm">
+
+    <h3>Modify Event</h3>
+
+    @using (Html.BeginForm("RedirectToModifyEvent", "CMS"))
+    {
+        @if (@Model == null)
+        {
+            Debug.WriteLine("No events loaded!");
+            return;
+        }
+
+        <label for="modifyEventTitle">Select event to modify:</label>
+        <select name="modifyEventTitle" id="modifyEventTitle">
+            @foreach (var ev in @Model)
+            {
+                <option value="@ev.EventTitle" name="@ev.EventID">@ev.EventTitle</option>
+            }
+        </select>
+        <br />
+
+        <input type="submit" id="selectEventButton" name="selectEvent" value="Select event">
+    }
+</div>
+
+@* delete event *@
 <div class="deleteEventForm">
+    <h3>Delete Event</h3>
+
     @using (Html.BeginForm("RemoveEvent", "CMS"))
     {
 

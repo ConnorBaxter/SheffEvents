@@ -74,6 +74,11 @@ body {
     background: #0366d6;
     color: #e5e5e5;
     padding: 10%;
+    width: 100%;
+    margin: 5%;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 5px dashed #ccc;
 }
 
 .addEventForm {
